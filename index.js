@@ -64,3 +64,18 @@ app.listen(3000, () => console.log('server os running'));
 
 // ir pasirasom kad kiekvienas mygtukas atliktu tai ka jis turi atlikti
 // kas parasyta jo pavadinime
+
+// ND SAVAITGALIUI
+
+/**
+ * Pasikurti express serveri nuo nulio
+ * pasijungti lintinga
+ * pasidaryti Blog postu CRUD'A
+ * create read update delete
+ *
+ * musu darytas projektas https://github.com/MariusCodeAcademy/js3_SImpleTODO
+ *
+ * parsisiusti pasidaryti nauja git saka, ir joje pabandyti pasijungti musu
+ * todo api kuri susikurem snd.
+ *
+ */
