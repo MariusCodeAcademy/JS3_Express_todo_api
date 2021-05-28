@@ -54,3 +54,13 @@ app.post('/api/todos/', (req, res) => {
 //api/todos/:id   // put
 
 app.listen(3000, () => console.log('server os running'));
+
+// visi kas pasidare pradeda nauja atskira projekta bet neisjungia esamo
+
+// susikuriam html ir js failus
+
+// html sukuriam mygtukus
+// get todos, create Todo, Delete todo 3, update todo 1
+
+// ir pasirasom kad kiekvienas mygtukas atliktu tai ka jis turi atlikti
+// kas parasyta jo pavadinime
