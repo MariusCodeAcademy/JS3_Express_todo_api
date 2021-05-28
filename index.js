@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { findTodoWithId, handleFindErr } = require('./helper/functions');
+const { findTodoWithId, handleFindErr, handleDelete } = require('./helper/functions');
 const todoDb = require('./db/todoDb');
 const app = express();
 
@@ -31,8 +31,7 @@ app.delete('/api/todos/:id', (req, res) => {
 
   // todel kad todoDb yra const, mes rasim norimo istrinti index
   // ir pasalinsim is masyvo
-  const index = todoDb.indexOf(found);
-  todoDb.splice(index, 1);
+  handleDelete(found);
 
   console.log(`deleted ${found.title}`);
   res.json({ deleted: found, todoDb });
