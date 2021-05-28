@@ -11,6 +11,8 @@ function handleFindErr(paramId, res) {
 }
 
 function handleDelete(found) {
+  // todel kad todoDb yra const, mes rasim norimo istrinti index
+  // ir pasalinsim is masyvo
   const index = todoDb.indexOf(found);
   todoDb.splice(index, 1);
 }
