@@ -2,6 +2,7 @@ const express = require('express');
 
 const { findTodoWithId, handleFindErr, handleDelete, addNewTodo } = require('./helper/functions');
 const todoDb = require('./db/todoDb');
+const cors = require('cors');
 const app = express();
 
 let id = 3; // last item id
@@ -9,6 +10,7 @@ let id = 3; // last item id
 // MiddleWare
 // to get request body parsed
 app.use(express.json());
+app.use(cors());
 
 // get all todos
 app.get('/api/todos', (req, res) => {
@@ -52,6 +54,24 @@ app.post('/api/todos/', (req, res) => {
 
 // update todo
 //api/todos/:id   // put
+app.put('/api/todos/:id', (req, res) => {
+  const paramId = req.params.id;
+  const found = findTodoWithId(paramId);
+
+  if (!found) {
+    handleFindErr(paramId, res);
+    return;
+  }
+  console.log('req.body', req.body);
+  // norim atnaujinti found el
+  const { title, done } = req.body;
+  found.title = title || found.title;
+  if (done === true) found.done = true;
+  if (done === false) found.done = false;
+
+  console.log(found);
+  res.json({ msg: 'update success', found });
+});
 
 app.listen(3000, () => console.log('server os running'));
 
@@ -63,7 +83,7 @@ app.listen(3000, () => console.log('server os running'));
 // get todos, create Todo, Delete todo 3, update todo 1
 
 // ir pasirasom kad kiekvienas mygtukas atliktu tai ka jis turi atlikti
-// kas parasyta jo pavadinime
+// kas parasyta jo pavadinime (fetch)
 
 // ND SAVAITGALIUI
 
