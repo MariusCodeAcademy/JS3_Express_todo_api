@@ -29,8 +29,13 @@ app.delete('/api/todos/:id', (req, res) => {
     return;
   }
 
-  console.log(`trinsim ${found}`);
-  res.json({ youWantToDelete: found });
+  // todel kad todoDb yra const, mes rasim norimo istrinti index
+  // ir pasalinsim is masyvo
+  const index = todoDb.indexOf(found);
+  todoDb.splice(index, 1);
+
+  console.log(`deleted ${found.title}`);
+  res.json({ deleted: found, todoDb });
 });
 
 app.listen(3000, () => console.log('server os running'));
