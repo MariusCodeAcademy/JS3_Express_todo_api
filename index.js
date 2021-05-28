@@ -1,27 +1,17 @@
 const express = require('express');
 
+const { findTodoWithId } = require('./helper/functions');
+const todoDb = require('./db/todoDb');
 const app = express();
-
-const todoDb = [
-  {
-    id: 1,
-    title: 'Go do stuff',
-    done: false,
-  },
-  {
-    id: 2,
-    title: 'Walk a dog',
-    done: true,
-  },
-  {
-    id: 3,
-    title: 'Buy milk',
-    done: false,
-  },
-];
 
 app.get('/api/todos', (req, res) => {
   res.json(todoDb);
+});
+
+app.get('/api/todos/:id', (req, res) => {
+  const found = findTodoWithId(req.params.id);
+  console.log(found);
+  res.json({ rez: found });
 });
 
 app.listen(3000, () => console.log('server os running'));
